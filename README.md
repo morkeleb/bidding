@@ -112,14 +112,14 @@ You might end up with something similar to
 
 ```ruby
 
-command_line = "nop " + my_arguments + " " + date.to_s + " " + integer.to_s
+command_line = "nop " + my_argument + " " + date.to_s + " " + integer.to_s
 
 ```
 Thats code isnt really nice to look at, so Bidding has a helper method to make prettier
 
 ```ruby
 
-command_line = Command.build("nop", my_arguments, date, integer.to_s)
+command_line = Command.build("nop", my_argument, date, integer)
 
 ```
 
