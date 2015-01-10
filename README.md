@@ -105,6 +105,24 @@ Command.parse("nop the_type 12345 awesome%20stuff!").execute()
 Each parameter is separated with a space. If you would like to add parameter values that contain spaces I recommend URI encoding them first.
 This allows you to handle strings that might contain spaces.
 
+#### Building a command line in ruby
+
+Sometimes you want to create a command line in Ruby. This could become a classic point of pain where concatinating strings creates ugly code.
+You might end up with something similar to
+
+```ruby
+
+command_line = "nop " + my_arguments + " " + date.to_s + " " + integer.to_s
+
+```
+Thats code isnt really nice to look at, so Bidding has a helper method to make prettier
+
+```ruby
+
+command_line = Command.build("nop", my_arguments, date, integer.to_s)
+
+```
+
 ### Components
 
 Appart from the Command structure bidding has 3 major components. All quite simple in their implementations.
