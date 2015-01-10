@@ -15,7 +15,11 @@ class Command
     command.user = user
     command.arguments = parts
     command.commandline = commandline
-    return command
+    command
+  end
+
+  def self.build(command, *args)
+    args.select {|arg| arg.to_s }.insert(0, command).join " "
   end
 
   def self.camel_case(s)
