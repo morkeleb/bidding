@@ -1,40 +1,41 @@
 require 'json'
 require 'bidding/tools/importer'
+require 'bidding/commands/nop'
 
 describe 'importer' do
 
-	describe 'when importing a single file' do
+  describe 'when importing a single file' do
 
-		before do
-			transaction = [{"commands"=>['nop']}]
-			
-			Dir.mkdir './tmp' unless File.exists? './tmp'
-			File.open("./tmp/log.json", "w") { |io|
-				io.write JSON transaction
-			  }
-		end
+    before do
+      transaction = [{"commands"=>['nop'], "date"=>222}]
 
-		it 'will run all the commands using a command executor' do
-			expect_any_instance_of(Nop).to receive(:execute)
-			
-			importer = Importer.new
+      Dir.mkdir './tmp' unless File.exists? './tmp'
+      File.open("./tmp/log.json", "w") { |io|
+        io.write JSON transaction
+      }
+    end
 
-			importer.import "./tmp/log.json"
+    it 'will run all the commands using a command executor' do
+      expect_any_instance_of(Nop).to receive(:execute)
+
+      importer = Importer.new
+
+      importer.import "./tmp/log.json"
 
 
-		end
+    end
 
-		it 'will run all commands with a replay flag set' do
+    it 'will run all commands with a replay flag set' do
 
-		end
+    end
 
-		it 'will delete the file once done' do
-			importer = Importer.new
+    it 'will delete the file once done' do
+      importer = Importer.new
 
-			importer.import "./tmp/log.json"
+      importer.import "./tmp/log.json"
 
-			expect(File.exist?("./tmp/log.json")).to be false
-		end
-	end
+      expect(File.exist?("./tmp/log.json")).to be false
+    end
+  end
 
 end

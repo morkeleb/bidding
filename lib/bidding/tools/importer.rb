@@ -1,4 +1,5 @@
-
+require 'time'
+require 'bidding/command'
 Dir["./lib/commands/**/*.rb"].sort.each {|f| require f}
 Dir["./lib/models/**/*.rb"].sort.each {|f| require f}
 class Importer
@@ -10,7 +11,7 @@ class Importer
 		transaction.each { |trans| 
 			commands = trans["commands"]
 			commands.each { |command_string| 
-				command = Command.parse command_string, trans["user"]
+				command = Command.parse command_string, trans["user"], Time.at(trans["date"])
 				command.replay
 				}
 		 }

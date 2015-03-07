@@ -1,5 +1,5 @@
 class Command
-  attr_accessor :name, :arguments, :user, :commandline
+  attr_accessor :name, :arguments, :user, :commandline, :execution_date
 
   def self.parameters(*args)
     args.each do |arg|
@@ -7,13 +7,14 @@ class Command
     end
   end
 
-  def self.parse(commandline, user)
+  def self.parse(commandline, user, time)
     parts = commandline.split(" ")
     name = camel_case parts.shift
     command = Kernel.const_get(name).new
     command.name = name
     command.user = user
     command.arguments = parts
+    command.execution_date = time
     command.commandline = commandline
     command
   end
