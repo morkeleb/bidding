@@ -25,7 +25,7 @@ class Command
 
   def self.camel_case(s)
     return s if s !~ /_/ && s =~ /[A-Z]+.*/
-    s.split('_').map{|e| e.capitalize}.join
+      s.split('_').map{|e| e.capitalize}.join
   end
 
 

@@ -44,7 +44,7 @@ describe CommandsExecutor do
           @queue.pushCommands({"commands"=>["nop"], "id"=>'myid'})
           expect(@queue.length).to eq 0
         end
-      end
+        end
 
       describe 'if the transaction fails' do
         before do
@@ -55,7 +55,7 @@ describe CommandsExecutor do
           expect(@queue.length).to eq 1
         end
       end
-    end
+      end
   end
 
-end
+  end

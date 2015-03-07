@@ -1,7 +1,7 @@
 
 class Nop < Command
 
-	def execute 
-	end
+  def execute 
+  end
 
 end
