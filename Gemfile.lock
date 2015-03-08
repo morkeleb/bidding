@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bidding (0.0.3)
+    bidding (0.0.4)
 
 GEM
   remote: https://rubygems.org/

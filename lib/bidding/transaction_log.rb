@@ -12,7 +12,7 @@ class TransactionLog
   end
 
   def push(transaction)
-    transaction["date"] = Time.now.utc.to_r
+    transaction["date"] = Time.now.utc.to_f
     adapter.push(transaction)
   end
 end
